@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0509FD2CA6C11200A1AFA4 /* GlobalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0509FC2CA6C11200A1AFA4 /* GlobalObject.swift */; };
 		0A8148EF2C9EA7F900E4DEDB /* BullyTracker Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0A8148EE2C9EA7F900E4DEDB /* BullyTracker Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0A8148F42C9EA7F900E4DEDB /* BullyTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8148F32C9EA7F900E4DEDB /* BullyTrackerApp.swift */; };
 		0A8148F62C9EA7F900E4DEDB /* SOSScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8148F52C9EA7F900E4DEDB /* SOSScreen.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A0509FC2CA6C11200A1AFA4 /* GlobalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalObject.swift; sourceTree = "<group>"; };
 		0A38A9352CA6A2C200BD6893 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0A8148E82C9EA7F900E4DEDB /* BullyTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BullyTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8148EE2C9EA7F900E4DEDB /* BullyTracker Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BullyTracker Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 			children = (
 				0AF86AB92CA2CC5800B0908D /* BullyTracker-Watch-App-Info.plist */,
 				0A8148F32C9EA7F900E4DEDB /* BullyTrackerApp.swift */,
+				0A0509FC2CA6C11200A1AFA4 /* GlobalObject.swift */,
 				0A8149072CA2B7E300E4DEDB /* LocationManager.swift */,
 				0A8148F52C9EA7F900E4DEDB /* SOSScreen.swift */,
 				0A8148F72C9EA7FA00E4DEDB /* Assets.xcassets */,
@@ -199,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A0509FD2CA6C11200A1AFA4 /* GlobalObject.swift in Sources */,
 				0A8148F62C9EA7F900E4DEDB /* SOSScreen.swift in Sources */,
 				0A8148F42C9EA7F900E4DEDB /* BullyTrackerApp.swift in Sources */,
 				0A8149082CA2B7E300E4DEDB /* LocationManager.swift in Sources */,

@@ -1,7 +1,8 @@
 import Foundation
 import CoreLocation
 
-class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
+// Intializes and configures CoreLocation services, starts location monitoring
+class LocationManager: NSObject, CLLocationManagerDelegate {
     var clLocationManager: CLLocationManager
     
     override init() {
@@ -40,13 +41,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         
     }
     
-    // I don't really know if the location data should be returned as a string... we'll see... this needs to be changed
-    // TODO return the values in appropriate data types
+    // for now Coordinates are returned as strings for testing purposes... once we implement geofencing we'll probably have to change
+    // TODO: return the values in appropriate data types
     func getMostRecentLocation() -> String {
         guard let location = clLocationManager.location else {
             return "unavailable"
         }
         
-        return "\(location.coordinate.latitude)-\(location.coordinate.longitude)"
+        return "\(location.coordinate.latitude)-\(location.coordinate.longitude) (location was at time: \(location.timestamp))"
     }
 }

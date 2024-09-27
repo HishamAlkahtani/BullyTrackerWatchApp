@@ -1,16 +1,12 @@
 import SwiftUI
 
-var locationManager: LocationManager?
-
 @main
 struct BullyTracker_Watch_App: App {
-    init () {
-        locationManager = LocationManager()
-    }
+    @StateObject var globalObject: GlobalObject = GlobalObject()
     
     var body: some Scene {
         WindowGroup {
-            SOSScreen()
+            SOSScreen().environmentObject(globalObject)
         }
     }
 }
