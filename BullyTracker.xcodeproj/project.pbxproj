@@ -40,6 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A38A9352CA6A2C200BD6893 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0A8148E82C9EA7F900E4DEDB /* BullyTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BullyTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8148EE2C9EA7F900E4DEDB /* BullyTracker Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BullyTracker Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8148F32C9EA7F900E4DEDB /* BullyTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullyTrackerApp.swift; sourceTree = "<group>"; };
@@ -64,6 +65,7 @@
 		0A8148E12C9EA7F800E4DEDB = {
 			isa = PBXGroup;
 			children = (
+				0A38A9352CA6A2C200BD6893 /* README.md */,
 				0A8148F22C9EA7F900E4DEDB /* BullyTracker Watch App */,
 				0A8148E92C9EA7F900E4DEDB /* Products */,
 			);
