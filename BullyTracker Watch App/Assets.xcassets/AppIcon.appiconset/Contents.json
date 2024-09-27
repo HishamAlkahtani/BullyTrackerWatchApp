@@ -1,0 +1,14 @@
+{
+  "images" : [
+    {
+      "filename" : "WhatsApp Image 2024-09-21 at 11.42.09 AM-2.jpeg",
+      "idiom" : "universal",
+      "platform" : "watchos",
+      "size" : "1024x1024"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
