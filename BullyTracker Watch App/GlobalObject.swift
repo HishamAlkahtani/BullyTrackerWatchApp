@@ -1,17 +1,37 @@
 import Foundation
 
-// TODO: watchId should be stored locally, only call server to assign id for the first time program is run
+/*
+    If more data storage is needed, move watchId inside dataStore and make it
+    encapsulate all data related functionalities. For now this is fine.
+ */
 
 // Initializes program and holds the data to be shared with views that need it
 class GlobalObject: ObservableObject {
     var locationManager: LocationManager
     @Published var watchId: Int
+    var dataStore: DataStore
     
     init() {
         self.locationManager = LocationManager()
         self.watchId = 0
+        self.dataStore = DataStore()
         
-        getWatchIdFromServer()
+        initWatchId()
+    }
+    
+    /* look for watchId in storage, if not found
+        ask server to assign watchId */
+    func initWatchId() {
+        do {
+            let tempId = try self.dataStore.loadWatchId()
+            if tempId == 0 {
+                getWatchIdFromServer()
+            } else {
+                self.watchId = tempId
+            }
+        } catch {
+            getWatchIdFromServer()
+        }
     }
     
     // Get watch id from server and update it whenever the id arrives
@@ -30,6 +50,13 @@ class GlobalObject: ObservableObject {
             }
             DispatchQueue.main.async {
                 self.watchId = recievedWatchId
+                print("Successfully recieved watchId")
+            }
+            
+            do {
+                try self.dataStore.saveWatchId(recievedWatchId)
+            } catch {
+                print("Failed to store watchId!")
             }
         }
         
