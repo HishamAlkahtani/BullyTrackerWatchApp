@@ -14,6 +14,7 @@
 		0A8148F82C9EA7FA00E4DEDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A8148F72C9EA7FA00E4DEDB /* Assets.xcassets */; };
 		0A8148FB2C9EA7FA00E4DEDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A8148FA2C9EA7FA00E4DEDB /* Preview Assets.xcassets */; };
 		0A8149082CA2B7E300E4DEDB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8149072CA2B7E300E4DEDB /* LocationManager.swift */; };
+		0A8C703C2CAC426200E7B7FA /* BackendRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C703B2CAC426200E7B7FA /* BackendRequests.swift */; };
 		0AD363B12CAACFE400C2F4D1 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD363B02CAACFE400C2F4D1 /* DataStore.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		0A8148F72C9EA7FA00E4DEDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A8148FA2C9EA7FA00E4DEDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0A8149072CA2B7E300E4DEDB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		0A8C703B2CAC426200E7B7FA /* BackendRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendRequests.swift; sourceTree = "<group>"; };
 		0AD363B02CAACFE400C2F4D1 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		0AF86AB92CA2CC5800B0908D /* BullyTracker-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BullyTracker-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -91,6 +93,7 @@
 				0A8148F32C9EA7F900E4DEDB /* BullyTrackerApp.swift */,
 				0A0509FC2CA6C11200A1AFA4 /* GlobalObject.swift */,
 				0AD363B02CAACFE400C2F4D1 /* DataStore.swift */,
+				0A8C703B2CAC426200E7B7FA /* BackendRequests.swift */,
 				0A8149072CA2B7E300E4DEDB /* LocationManager.swift */,
 				0A8148F52C9EA7F900E4DEDB /* SOSScreen.swift */,
 				0A8148F72C9EA7FA00E4DEDB /* Assets.xcassets */,
@@ -207,6 +210,7 @@
 			files = (
 				0A0509FD2CA6C11200A1AFA4 /* GlobalObject.swift in Sources */,
 				0A8148F62C9EA7F900E4DEDB /* SOSScreen.swift in Sources */,
+				0A8C703C2CAC426200E7B7FA /* BackendRequests.swift in Sources */,
 				0A8148F42C9EA7F900E4DEDB /* BullyTrackerApp.swift in Sources */,
 				0AD363B12CAACFE400C2F4D1 /* DataStore.swift in Sources */,
 				0A8149082CA2B7E300E4DEDB /* LocationManager.swift in Sources */,

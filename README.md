@@ -25,3 +25,4 @@ TODO:
     - [ ] On start, make the app check if it has a connection to the backend, if not, show an error message
 
 - [ ] Some debugging system to collect data from all watches and send it to a central log file in backend?
+- [ ] Add an initial view that shows loading sign, waiting to connect to server?

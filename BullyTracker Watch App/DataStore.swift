@@ -8,10 +8,7 @@ import Foundation
 
 // Manages persistent data
 class DataStore: ObservableObject {
-    
-    init() {
-    }
-    
+
     private static func getFileUrl() throws -> URL {
         try FileManager.default.url(for: .documentDirectory,
                                     in: .userDomainMask,
@@ -20,17 +17,16 @@ class DataStore: ObservableObject {
         .appending(path: "watchId.data")
     }
     
-    func loadWatchId () throws -> Int {
+    static func loadWatchId () throws -> Int {
         let fileURL = try DataStore.getFileUrl()
         guard let data = try? Data(contentsOf: fileURL) else {
             return 0
         }
             
-            
         return Int(String(data: data, encoding: .utf8) ?? "0") ?? 0
     }
     
-    func saveWatchId(_ watchId: Int) throws {
+    static func saveWatchId(_ watchId: Int) throws {
         guard let data = String(watchId).data(using: .utf8) else {
             print("Failed to convert watchId to Data object before saving watchId")
             return
