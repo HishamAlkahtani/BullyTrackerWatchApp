@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A0509FD2CA6C11200A1AFA4 /* GlobalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0509FC2CA6C11200A1AFA4 /* GlobalObject.swift */; };
+		0A4B5BC82CAD8A3B000881FD /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4B5BC72CAD8A3B000881FD /* HKManager.swift */; };
 		0A8148EF2C9EA7F900E4DEDB /* BullyTracker Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0A8148EE2C9EA7F900E4DEDB /* BullyTracker Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0A8148F42C9EA7F900E4DEDB /* BullyTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8148F32C9EA7F900E4DEDB /* BullyTrackerApp.swift */; };
 		0A8148F62C9EA7F900E4DEDB /* SOSScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8148F52C9EA7F900E4DEDB /* SOSScreen.swift */; };
@@ -45,6 +46,8 @@
 /* Begin PBXFileReference section */
 		0A0509FC2CA6C11200A1AFA4 /* GlobalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalObject.swift; sourceTree = "<group>"; };
 		0A38A9352CA6A2C200BD6893 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0A4B5BC62CAD899A000881FD /* BullyTracker Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BullyTracker Watch App.entitlements"; sourceTree = "<group>"; };
+		0A4B5BC72CAD8A3B000881FD /* HKManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKManager.swift; sourceTree = "<group>"; };
 		0A8148E82C9EA7F900E4DEDB /* BullyTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BullyTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8148EE2C9EA7F900E4DEDB /* BullyTracker Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BullyTracker Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8148F32C9EA7F900E4DEDB /* BullyTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullyTrackerApp.swift; sourceTree = "<group>"; };
@@ -89,8 +92,10 @@
 		0A8148F22C9EA7F900E4DEDB /* BullyTracker Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				0A4B5BC62CAD899A000881FD /* BullyTracker Watch App.entitlements */,
 				0AF86AB92CA2CC5800B0908D /* BullyTracker-Watch-App-Info.plist */,
 				0A8148F32C9EA7F900E4DEDB /* BullyTrackerApp.swift */,
+				0A4B5BC72CAD8A3B000881FD /* HKManager.swift */,
 				0A0509FC2CA6C11200A1AFA4 /* GlobalObject.swift */,
 				0AD363B02CAACFE400C2F4D1 /* DataStore.swift */,
 				0A8C703B2CAC426200E7B7FA /* BackendRequests.swift */,
@@ -212,6 +217,7 @@
 				0A8148F62C9EA7F900E4DEDB /* SOSScreen.swift in Sources */,
 				0A8C703C2CAC426200E7B7FA /* BackendRequests.swift in Sources */,
 				0A8148F42C9EA7F900E4DEDB /* BullyTrackerApp.swift in Sources */,
+				0A4B5BC82CAD8A3B000881FD /* HKManager.swift in Sources */,
 				0AD363B12CAACFE400C2F4D1 /* DataStore.swift in Sources */,
 				0A8149082CA2B7E300E4DEDB /* LocationManager.swift in Sources */,
 			);
@@ -347,6 +353,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "BullyTracker Watch App/BullyTracker Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BullyTracker Watch App/Preview Content\"";
@@ -355,6 +362,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "BullyTracker-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = BullyTracker;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Heart rate data will be used to automatically detect emergencies";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Heart rate data will be used to automatically detect emergencies";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location will be used to send help in an emergency situation";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location will be used to send help in an emergency situation";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -380,6 +389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "BullyTracker Watch App/BullyTracker Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BullyTracker Watch App/Preview Content\"";
@@ -388,6 +398,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "BullyTracker-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = BullyTracker;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Heart rate data will be used to automatically detect emergencies";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Heart rate data will be used to automatically detect emergencies";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location will be used to send help in an emergency situation";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location will be used to send help in an emergency situation";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

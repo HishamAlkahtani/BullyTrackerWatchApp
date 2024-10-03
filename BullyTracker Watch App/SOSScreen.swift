@@ -6,7 +6,11 @@ struct SOSScreen: View {
     
     var body: some View {
         VStack {
-            Text("\(globalObject.watchId)").foregroundStyle(.gray).padding()
+            Text("ID: \(globalObject.watchId)").foregroundStyle(.gray)
+            HStack{
+                Image(systemName: "heart.fill").foregroundStyle(.red)
+                Text(": \(globalObject.heartRate)")
+            }
             Button("SOS"){
                 backendRequests
                     .sendAlert()

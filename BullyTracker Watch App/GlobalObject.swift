@@ -1,20 +1,19 @@
 import Foundation
 
-/*
-    If more data storage is needed, move watchId inside dataStore and make it
-    encapsulate all data related functionalities. For now this is fine.
- */
-
 // Initializes program and holds the data to be shared with views that need it
 class GlobalObject: ObservableObject {
     var locationManager: LocationManager
     var backendRequests: BackendRequests
     @Published var watchId: Int
     
+    // for now it's a string, just to test HR is being read properly
+    @Published var heartRate: String
+    
     init() {
         self.locationManager = LocationManager()
         self.watchId = 0
         self.backendRequests = BackendRequests()
+        self.heartRate = "N/A"
         backendRequests.globalObject = self
         
         initWatchId()
