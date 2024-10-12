@@ -21,7 +21,7 @@ TODO:
     - [ ] Implement Always On (so the screen doesn't lock)
        
 - [ ] User Interfacecs:
-    - [ ] Make a cancel alert view with a countdown that allows students a chance to cancel the alert (will be used for both the SOS button and the auto detection)
+    - [X] Make a cancel alert view with a countdown that allows students a chance to cancel the alert (will be used for both the SOS button and the auto detection)
     - [ ] Alert successfully sent view
     - [ ] On start, make the app check if it has a connection to the backend, if not, show an error message
 
