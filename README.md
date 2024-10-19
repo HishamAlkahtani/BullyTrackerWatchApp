@@ -19,6 +19,7 @@ TODO:
     - [X] Implement heart rate monitoring
     - [ ] Implement high heart rate auto detection algorithm
     - [ ] Implement Always On (so the screen doesn't lock)
+    - [ ] Make the workout session properly end when the app is force closed (there is a bug where the green heart rate sensors remain active even after the app has been force closed)
        
 - [ ] User Interfacecs:
     - [X] Make a cancel alert view with a countdown that allows students a chance to cancel the alert (will be used for both the SOS button and the auto detection)
