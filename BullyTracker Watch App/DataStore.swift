@@ -14,20 +14,20 @@ class DataStore: ObservableObject {
                                     in: .userDomainMask,
                                     appropriateFor: nil,
                                     create: false)
-        .appending(path: "watchId.data")
+            .appending(path: "watchId.data")
     }
     
-    static func loadWatchId () throws -> Int {
+    static func loadWatchId () throws -> String {
         let fileURL = try DataStore.getFileUrl()
         guard let data = try? Data(contentsOf: fileURL) else {
-            return 0
+            return "0"
         }
             
-        return Int(String(data: data, encoding: .utf8) ?? "0") ?? 0
+        return String(data: data, encoding: .utf8) ?? "0"
     }
     
-    static func saveWatchId(_ watchId: Int) throws {
-        guard let data = String(watchId).data(using: .utf8) else {
+    static func saveWatchId(_ watchId: String) throws {
+        guard let data = watchId.data(using: .utf8) else {
             print("Failed to convert watchId to Data object before saving watchId")
             return
         }

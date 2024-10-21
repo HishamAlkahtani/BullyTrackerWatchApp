@@ -17,9 +17,14 @@ struct BullyTracker_Watch_App: App {
     
     var body: some Scene {
         WindowGroup {
-            SOSScreen()
-                .environmentObject(globalObject)
-                .environmentObject(backendRequests)
+            if globalObject.watchId == "0" {
+                AwaitingSetup()
+            } else {
+                SOSScreen()
+                    .environmentObject(globalObject)
+                    .environmentObject(backendRequests)
+
+            }
         }
     }
 }

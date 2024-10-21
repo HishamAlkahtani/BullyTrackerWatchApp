@@ -3,9 +3,11 @@
 TODO:
 
 - [X] Connect alert button to backend
-- [ ] Figure out the setup process (Who configures the watch and assigns it to students?)
-    - [X] Possible setup process?: When the app opens, the app asks the backend to assign it an ID. This will have the benefit of the id's being shorter (as opposed to randomly generating IDs), since it can just be a counter that we increment. The ID assigned to the watch is then linked to the student by the school's administrator, but the watch app only knows the ID.
-    - [X] Store the watchId locally in the watch. The watch should be assigned an ID one time only when the app is first installed.
+- [ ] Setup process (tentative):
+    - [X] 1) The first time the app is run, it asks the backend server to assign it an id...
+    - [X] 2) Store the watchId locally in the watch. The watch should be assigned an ID one time only when the app is first installed.
+    - [ ] 3) After the watch is assigned an id, it is still not active, it must wait for the school admin to link it to the school and then to a student. until the watch app is activated, it keeps periodically asking the backend if it has been linked yet or not
+    - [ ] 4) Once setup is complete on the client side of the web-app, the backend should respond with the name of the school that is trying to use the watch. A prompt should be displayed on the watch with the name of the school, if YES is pressed, the watch is now activated.
 
 - [ ] Core Location:
     - [X] Implement core location
@@ -27,4 +29,6 @@ TODO:
     - [ ] On start, make the app check if it has a connection to the backend, if not, show an error message
 
 - [ ] Some debugging system to collect data from all watches and send it to a central log file in backend?
-- [ ] Add an initial view that shows loading sign, waiting to connect to server?
+- [X] Add an initial view that shows loading sign, waiting to connect to server on the first run of the program
+- [ ] Rewrite DataStore to allow storage of info essential to the setup process
+- [ ] BUG: If the first request to get watchId from server fails, all subsequent requests fail for some reason. Shouldn't be a problem if you manage to keep the server up and available at all times. But say the watch wasn't connected to the internet on the first attempt, the app is locked out and must be downloaded again...

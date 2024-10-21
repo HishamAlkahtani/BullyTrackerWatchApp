@@ -4,14 +4,14 @@ import Foundation
 class GlobalObject: ObservableObject {
     var locationManager: LocationManager
     var backendRequests: BackendRequests
-    @Published var watchId: Int
+    @Published var watchId: String
     
     // for now it's a string, just to test HR is being read properly
     @Published var heartRate: String
     
     init() {
         self.locationManager = LocationManager()
-        self.watchId = 0
+        self.watchId = "0"
         self.backendRequests = BackendRequests()
         self.heartRate = "N/A"
         backendRequests.globalObject = self
@@ -24,7 +24,7 @@ class GlobalObject: ObservableObject {
     func initWatchId() {
         do {
             let tempId = try DataStore.loadWatchId()
-            if tempId == 0 {
+            if tempId == "0" {
                 backendRequests.getWatchIdFromServer()
             } else {
                 self.watchId = tempId
