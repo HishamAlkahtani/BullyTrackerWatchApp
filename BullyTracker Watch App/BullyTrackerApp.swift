@@ -7,6 +7,7 @@ struct BullyTracker_Watch_App: App {
     @StateObject var healthKitManager: HKManager
     
     init() {
+        // This is a mess, change later
         let global = GlobalObject()
         let HK = HKManager()
         HK.globalObject = global
@@ -17,14 +18,14 @@ struct BullyTracker_Watch_App: App {
     
     var body: some Scene {
         WindowGroup {
-            if globalObject.watchId == "0" {
+            if globalObject.watchId == "0" || !globalObject.isActive {
                 AwaitingSetup()
             } else {
                 SOSScreen()
-                    .environmentObject(globalObject)
-                    .environmentObject(backendRequests)
-
             }
         }
+        .environmentObject(globalObject)
+        .environmentObject(backendRequests)
+
     }
 }

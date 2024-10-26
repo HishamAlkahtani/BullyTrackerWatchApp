@@ -3,11 +3,11 @@
 TODO:
 
 - [X] Connect alert button to backend
-- [ ] Setup process (tentative):
+- [X] Setup process (tentative):
     - [X] 1) The first time the app is run, it asks the backend server to assign it an id...
     - [X] 2) Store the watchId locally in the watch. The watch should be assigned an ID one time only when the app is first installed.
-    - [ ] 3) After the watch is assigned an id, it is still not active, it must wait for the school admin to link it to the school and then to a student. until the watch app is activated, it keeps periodically asking the backend if it has been linked yet or not
-    - [ ] 4) Once setup is complete on the client side of the web-app, the backend should respond with the name of the school that is trying to use the watch. A prompt should be displayed on the watch with the name of the school, if YES is pressed, the watch is now activated.
+    - [X] 3) After the watch is assigned an id, it is still not active, it must wait for the school admin to link it to the school and then to a student. until the watch app is activated, it keeps periodically asking the backend if it has been linked yet or not
+    - [X] 4) Once setup is complete on the client side of the web-app, the backend should respond with the name of the school that is trying to use the watch. A prompt should be displayed on the watch with the name of the school, if YES is pressed, the watch is now activated.
 
 - [ ] Core Location:
     - [X] Implement core location

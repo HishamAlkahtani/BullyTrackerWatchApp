@@ -14,24 +14,24 @@ class DataStore: ObservableObject {
                                     in: .userDomainMask,
                                     appropriateFor: nil,
                                     create: false)
-            .appending(path: "watchId.data")
+            .appending(path: "appData.json")
     }
     
-    static func loadWatchId () throws -> String {
+    static func loadAppData () throws -> AppData {
         let fileURL = try DataStore.getFileUrl()
-        guard let data = try? Data(contentsOf: fileURL) else {
-            return "0"
-        }
-            
-        return String(data: data, encoding: .utf8) ?? "0"
+        let data = try Data(contentsOf: fileURL)
+        return try JSONDecoder().decode(AppData.self, from: data)
     }
     
-    static func saveWatchId(_ watchId: String) throws {
-        guard let data = watchId.data(using: .utf8) else {
-            print("Failed to convert watchId to Data object before saving watchId")
-            return
-        }
+    static func saveAppData (_ appData: AppData) throws {
+        let data = try JSONEncoder().encode(appData)
         let outFile = try DataStore.getFileUrl()
         try data.write(to: outFile)
     }
+}
+
+struct AppData: Codable {
+    let watchId: String?
+    let isActive: Bool
+    let schoolName: String?
 }
