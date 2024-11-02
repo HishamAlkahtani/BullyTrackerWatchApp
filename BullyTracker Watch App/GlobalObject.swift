@@ -16,7 +16,7 @@ class GlobalObject: ObservableObject {
         self.locationManager = LocationManager()
         self.watchId = "0"
         self.backendRequests = BackendRequests()
-        self.heartRate = "N/A"
+        self.heartRate = "NA"
         self.isActive = false
         backendRequests.globalObject = self
         initAppData()

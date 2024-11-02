@@ -3,6 +3,7 @@
 TODO:
 
 - [X] Connect alert button to backend
+- [ ] Change the alert request to POST?
 - [X] Setup process (tentative):
     - [X] 1) The first time the app is run, it asks the backend server to assign it an id...
     - [X] 2) Store the watchId locally in the watch. The watch should be assigned an ID one time only when the app is first installed.
@@ -14,6 +15,7 @@ TODO:
     - [X] Make the app send the student's last known location when alert button is pressed
     - [ ] Make the app periodically send student's location for parent monitoring?
     - [ ] Force the app to update location when the button is pressed? (Locations can be a few minutes old...)
+    - [ ] Send location data in a useful format for the backend and firestore
 
 - [ ] HealthKit:
     - [X] Start HKWorkoutSession (session starts as soon as app opens?)
@@ -30,5 +32,5 @@ TODO:
 
 - [ ] Some debugging system to collect data from all watches and send it to a central log file in backend?
 - [X] Add an initial view that shows loading sign, waiting to connect to server on the first run of the program
-- [ ] Rewrite DataStore to allow storage of info essential to the setup process
+- [X] Rewrite DataStore to allow storage of info essential to the setup process
 - [ ] BUG: If the first request to get watchId from server fails, all subsequent requests fail for some reason. Shouldn't be a problem if you manage to keep the server up and available at all times. But say the watch wasn't connected to the internet on the first attempt, the app is locked out and must be downloaded again...

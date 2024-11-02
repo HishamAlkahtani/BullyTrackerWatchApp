@@ -3,8 +3,8 @@ import Foundation
 // Handles all communications with backend server
 class BackendRequests: ObservableObject {
     private let baseURL = 
-        //"https://BTProto.pythonanywhere.com"
-        "http://127.0.0.1:5000/watchAPI"
+        "https://BTProto.pythonanywhere.com/watchAPI"
+        //"http://127.0.0.1:5000/watchAPI"
     
     // for periodic requests
     private let sleepInterval = 3.0;
@@ -58,11 +58,13 @@ class BackendRequests: ObservableObject {
     
     func acceptSetup() {
         globalObject.isActive = true;
+        globalObject.storeAppData()
         postAppData()
     }
     
     func rejectSetup() {
         globalObject.schoolName = nil;
+        globalObject.storeAppData();
         postAppData()
     }
     
@@ -123,7 +125,7 @@ class BackendRequests: ObservableObject {
     func sendAlert() {
         let wId = globalObject.watchId
         let location = globalObject.locationManager.getMostRecentLocation()
-        let url = URL(string: "\(baseURL)/alert/\(wId)/\(location) HR: \(globalObject.heartRate)")!
+        let url = URL(string: "\(baseURL)/alert/\(wId)/\(location)")!
         
         let task = URLSession.shared.dataTask(with: url) {
             (data, response, error) in
