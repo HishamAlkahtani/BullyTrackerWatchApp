@@ -15,7 +15,7 @@ TODO:
     - [X] Make the app send the student's last known location when alert button is pressed
     - [ ] Make the app periodically send student's location for parent monitoring?
     - [ ] Force the app to update location when the button is pressed? (Locations can be a few minutes old...)
-    - [ ] Send location data in a useful format for the backend and firestore
+    - [ ] Update the alert request to match the new watch api with coordinates (/watchAPI/alert/watchId/lat/long)
 
 - [ ] HealthKit:
     - [X] Start HKWorkoutSession (session starts as soon as app opens?)
