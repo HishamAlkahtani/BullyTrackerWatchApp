@@ -125,7 +125,11 @@ class BackendRequests: ObservableObject {
     func sendAlert() {
         let wId = globalObject.watchId
         let location = globalObject.locationManager.getMostRecentLocation()
-        let url = URL(string: "\(baseURL)/alert/\(wId)/\(location)")!
+        let latitude = location?.latitude ?? 0.0
+        let longitude = location?.longitude ?? 0.0
+        let url = URL(string: "\(baseURL)/alert/\(wId)/\(latitude)/\(longitude)")!
+        
+        print(url.absoluteString)
         
         let task = URLSession.shared.dataTask(with: url) {
             (data, response, error) in

@@ -3,7 +3,6 @@
 TODO:
 
 - [X] Connect alert button to backend
-- [ ] Change the alert request to POST?
 - [X] Setup process (tentative):
     - [X] 1) The first time the app is run, it asks the backend server to assign it an id...
     - [X] 2) Store the watchId locally in the watch. The watch should be assigned an ID one time only when the app is first installed.
@@ -15,7 +14,7 @@ TODO:
     - [X] Make the app send the student's last known location when alert button is pressed
     - [ ] Make the app periodically send student's location for parent monitoring?
     - [ ] Force the app to update location when the button is pressed? (Locations can be a few minutes old...)
-    - [ ] Update the alert request to match the new watch api with coordinates (/watchAPI/alert/watchId/lat/long)
+    - [X] Update the alert request to match the new watch api with coordinates (/watchAPI/alert/watchId/lat/long)
 
 - [ ] HealthKit:
     - [X] Start HKWorkoutSession (session starts as soon as app opens?)
@@ -35,3 +34,4 @@ TODO:
 - [X] Rewrite DataStore to allow storage of info essential to the setup process
 - [ ] BUG: If the first request to get watchId from server fails, all subsequent requests fail for some reason. Shouldn't be a problem if you manage to keep the server up and available at all times. But say the watch wasn't connected to the internet on the first attempt, the app is locked out and must be downloaded again...
 - [ ] Vibration before sending sos alert
+- [ ] Implement Fall Detection
