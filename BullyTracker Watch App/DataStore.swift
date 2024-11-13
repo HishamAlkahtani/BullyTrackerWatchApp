@@ -1,11 +1,5 @@
 import Foundation
 
-/*
-     For now we only need to store watchId. If in the future we need to store more, consider
-     defining a Codable struct that holds all the app's data. and change DataStore's code
-     accordingly.
- */
-
 // Manages persistent data
 class DataStore: ObservableObject {
 
