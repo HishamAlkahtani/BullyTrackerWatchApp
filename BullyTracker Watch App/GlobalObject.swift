@@ -4,11 +4,15 @@ import Foundation
 class GlobalObject: ObservableObject {
     var locationManager: LocationManager
     var backendRequests: BackendRequests
+    var alertManager: AlertManager
+    var fallDetection: FallDetectionManager
+    var hkManager: HKManager
     
     @Published var watchId: String
     @Published var isActive: Bool
     @Published var schoolName: String?
 
+    
     // for now it's a string, just to test HR is being read properly
     @Published var heartRate: String
     
@@ -18,6 +22,13 @@ class GlobalObject: ObservableObject {
         self.backendRequests = BackendRequests()
         self.heartRate = "NA"
         self.isActive = false
+        self.alertManager = AlertManager()
+        self.fallDetection = FallDetectionManager()
+        self.hkManager = HKManager()
+        
+        self.hkManager.globalObject = self
+        self.alertManager.backendRequests = self.backendRequests
+        self.fallDetection.alertManager = self.alertManager
         backendRequests.globalObject = self
         initAppData()
     }

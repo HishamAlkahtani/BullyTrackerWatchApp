@@ -16,6 +16,8 @@
 		0A8148FB2C9EA7FA00E4DEDB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A8148FA2C9EA7FA00E4DEDB /* Preview Assets.xcassets */; };
 		0A8149082CA2B7E300E4DEDB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8149072CA2B7E300E4DEDB /* LocationManager.swift */; };
 		0A8C703C2CAC426200E7B7FA /* BackendRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C703B2CAC426200E7B7FA /* BackendRequests.swift */; };
+		0AAB48D02CE798C2008477A8 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAB48CF2CE798C2008477A8 /* AlertManager.swift */; };
+		0AC870A42CE7519700E009B2 /* FallDetectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC870A32CE7519700E009B2 /* FallDetectionManager.swift */; };
 		0AD308C42CC692E100CC9784 /* AwaitingSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD308C32CC692E100CC9784 /* AwaitingSetup.swift */; };
 		0AD363B12CAACFE400C2F4D1 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD363B02CAACFE400C2F4D1 /* DataStore.swift */; };
 /* End PBXBuildFile section */
@@ -57,6 +59,8 @@
 		0A8148FA2C9EA7FA00E4DEDB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0A8149072CA2B7E300E4DEDB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		0A8C703B2CAC426200E7B7FA /* BackendRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendRequests.swift; sourceTree = "<group>"; };
+		0AAB48CF2CE798C2008477A8 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		0AC870A32CE7519700E009B2 /* FallDetectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallDetectionManager.swift; sourceTree = "<group>"; };
 		0AD308C32CC692E100CC9784 /* AwaitingSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwaitingSetup.swift; sourceTree = "<group>"; };
 		0AD363B02CAACFE400C2F4D1 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		0AF86AB92CA2CC5800B0908D /* BullyTracker-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BullyTracker-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -98,7 +102,9 @@
 				0AF86AB92CA2CC5800B0908D /* BullyTracker-Watch-App-Info.plist */,
 				0A8148F32C9EA7F900E4DEDB /* BullyTrackerApp.swift */,
 				0A4B5BC72CAD8A3B000881FD /* HKManager.swift */,
+				0AC870A32CE7519700E009B2 /* FallDetectionManager.swift */,
 				0A0509FC2CA6C11200A1AFA4 /* GlobalObject.swift */,
+				0AAB48CF2CE798C2008477A8 /* AlertManager.swift */,
 				0AD363B02CAACFE400C2F4D1 /* DataStore.swift */,
 				0AD308C32CC692E100CC9784 /* AwaitingSetup.swift */,
 				0A8C703B2CAC426200E7B7FA /* BackendRequests.swift */,
@@ -218,11 +224,13 @@
 			files = (
 				0A0509FD2CA6C11200A1AFA4 /* GlobalObject.swift in Sources */,
 				0A8148F62C9EA7F900E4DEDB /* SOSScreen.swift in Sources */,
+				0AAB48D02CE798C2008477A8 /* AlertManager.swift in Sources */,
 				0A8C703C2CAC426200E7B7FA /* BackendRequests.swift in Sources */,
 				0AD308C42CC692E100CC9784 /* AwaitingSetup.swift in Sources */,
 				0A8148F42C9EA7F900E4DEDB /* BullyTrackerApp.swift in Sources */,
 				0A4B5BC82CAD8A3B000881FD /* HKManager.swift in Sources */,
 				0AD363B12CAACFE400C2F4D1 /* DataStore.swift in Sources */,
+				0AC870A42CE7519700E009B2 /* FallDetectionManager.swift in Sources */,
 				0A8149082CA2B7E300E4DEDB /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,14 +366,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "BullyTracker Watch App/BullyTracker Watch App.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BullyTracker Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = H228535KC3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "BullyTracker-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = BullyTracker;
+				INFOPLIST_KEY_NSFallDetectionUsageDescription = "Fall detection will be used to notify the school to send help to the student in case of an emergency.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Heart rate data will be used to automatically detect emergencies";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Heart rate data will be used to automatically detect emergencies";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location will be used to send help in an emergency situation";
@@ -376,9 +386,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = BullyTracker.BTProto2.Watchapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -394,14 +405,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "BullyTracker Watch App/BullyTracker Watch App.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BullyTracker Watch App/Preview Content\"";
 				DEVELOPMENT_TEAM = H228535KC3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "BullyTracker-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = BullyTracker;
+				INFOPLIST_KEY_NSFallDetectionUsageDescription = "Fall detection will be used to notify the school to send help to the student in case of an emergency.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Heart rate data will be used to automatically detect emergencies";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Heart rate data will be used to automatically detect emergencies";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Location will be used to send help in an emergency situation";
@@ -412,9 +425,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = BullyTracker.BTProto2.Watchapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -429,13 +443,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H228535KC3;
 				INFOPLIST_KEY_CFBundleDisplayName = BullyTracker;
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = BullyTracker.BTProto2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 			};
@@ -445,13 +461,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = H228535KC3;
 				INFOPLIST_KEY_CFBundleDisplayName = BullyTracker;
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.9;
 				PRODUCT_BUNDLE_IDENTIFIER = BullyTracker.BTProto2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
