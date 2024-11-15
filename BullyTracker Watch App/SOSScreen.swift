@@ -47,6 +47,7 @@ struct SOSScreen: View {
         .onDisappear {
             stopTimer()
         }
+        .sensoryFeedback(.warning, trigger: countdown)
     }
     
     // Start the countdown timer

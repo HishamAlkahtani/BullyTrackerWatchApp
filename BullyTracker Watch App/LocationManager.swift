@@ -41,7 +41,6 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         
     }
     
-    // for now Coordinates are returned as strings for testing purposes... once we implement geofencing we'll probably have to change
     func getMostRecentLocation() -> CLLocationCoordinate2D? {
         guard let location = clLocationManager.location else {
             return nil

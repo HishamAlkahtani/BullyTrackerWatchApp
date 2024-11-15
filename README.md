@@ -33,5 +33,5 @@ TODO:
 - [X] Add an initial view that shows loading sign, waiting to connect to server on the first run of the program
 - [X] Rewrite DataStore to allow storage of info essential to the setup process
 - [ ] BUG: If the first request to get watchId from server fails, all subsequent requests fail for some reason. Shouldn't be a problem if you manage to keep the server up and available at all times. But say the watch wasn't connected to the internet on the first attempt, the app is locked out and must be downloaded again...
-- [ ] Vibration before sending sos alert
+- [X] Vibration before sending sos alert
 - [ ] Implement Fall Detection
