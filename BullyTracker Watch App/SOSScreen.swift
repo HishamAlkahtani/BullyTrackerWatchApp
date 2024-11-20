@@ -40,6 +40,9 @@ struct SOSScreen: View {
         }
         .transition(.slide)
         .padding()
+        .onAppear {
+            self.globalObject.initFallDetection()
+        }
         .onDisappear {
             self.alertManager.stopTimer()
         }

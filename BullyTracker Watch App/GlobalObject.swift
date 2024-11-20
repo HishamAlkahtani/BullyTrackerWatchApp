@@ -5,7 +5,7 @@ class GlobalObject: ObservableObject {
     var locationManager: LocationManager
     var backendRequests: BackendRequests
     var alertManager: AlertManager
-    var fallDetection: FallDetectionManager
+    var fallDetection: FallDetectionManager?
     var hkManager: HKManager
     
     @Published var watchId: String
@@ -17,20 +17,24 @@ class GlobalObject: ObservableObject {
     @Published var heartRate: String
     
     init() {
-        self.locationManager = LocationManager()
         self.watchId = "0"
         self.backendRequests = BackendRequests()
         self.heartRate = "NA"
         self.isActive = false
         self.alertManager = AlertManager()
-        self.fallDetection = FallDetectionManager()
         self.hkManager = HKManager()
+        self.locationManager = LocationManager()
+        self.fallDetection = nil
         
         self.hkManager.globalObject = self
         self.alertManager.backendRequests = self.backendRequests
-        self.fallDetection.alertManager = self.alertManager
         backendRequests.globalObject = self
         initAppData()
+    }
+    
+    func initFallDetection () {
+        self.fallDetection = FallDetectionManager()
+        self.fallDetection!.alertManager = self.alertManager
     }
     
     /* look for watchId in storage, if not found
@@ -42,6 +46,7 @@ class GlobalObject: ObservableObject {
             self.isActive = appData.isActive
             self.schoolName = appData.schoolName
             
+            // if watch is not active, it has not been setup yet.
             if (!isActive) {
                 backendRequests.initSetupProcess()
             }
