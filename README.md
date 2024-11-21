@@ -12,8 +12,7 @@ TODO:
 - [ ] Core Location:
     - [X] Implement core location
     - [X] Make the app send the student's last known location when alert button is pressed
-    - [ ] Make the app periodically send student's location for parent monitoring?
-    - [ ] Force the app to update location when the button is pressed? (Locations can be a few minutes old...)
+    - [X] Make the app periodically send student's location for parent monitoring?
     - [X] Update the alert request to match the new watch api with coordinates (/watchAPI/alert/watchId/lat/long)
 
 - [ ] HealthKit:

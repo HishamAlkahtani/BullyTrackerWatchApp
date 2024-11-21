@@ -28,7 +28,8 @@ class GlobalObject: ObservableObject {
         
         self.hkManager.globalObject = self
         self.alertManager.backendRequests = self.backendRequests
-        backendRequests.globalObject = self
+        self.backendRequests.globalObject = self
+        self.locationManager.backendRequests = self.backendRequests
         initAppData()
     }
     

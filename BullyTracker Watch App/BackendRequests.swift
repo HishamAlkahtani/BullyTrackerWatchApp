@@ -1,4 +1,5 @@
 import Foundation
+import CoreLocation
 
 // Handles all communications with backend server
 class BackendRequests: ObservableObject {
@@ -179,6 +180,25 @@ class BackendRequests: ObservableObject {
         URLSession.shared.reset() {
             self.getWatchIdFromServer()
         }
+    }
+    
+    func sendLocationUpdate(_ location: CLLocation) {
+        let wId = globalObject.watchId
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+        let timestamp = location.timestamp
+        let url = URL(string: "\(baseURL)/locationUpdate/\(wId)/\(latitude)/\(longitude)/\(timestamp)")!
+        
+        print(url.absoluteString)
+        
+        let task = URLSession.shared.dataTask(with: url) {
+            (data, response, error) in
+            guard let data = data else {return }
+            guard let response = String(data: data, encoding: .utf8) else {return}
+            print (response)
+        }
+        
+        task.resume()
     }
     
 }
