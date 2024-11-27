@@ -7,13 +7,19 @@ class BackendRequests: ObservableObject {
         "https://BTProto.pythonanywhere.com/watchAPI"
         //"http://127.0.0.1:5000/watchAPI"
     
-    // for periodic requests
-    private let sleepInterval = 3.0;
+    private let secondsBetweenSetupUpdateRequests = 3.0;
+    private let secondsBetweenStatusCheck = 45.0;
+    private var setupInProgress: Bool = false
     
     var globalObject: GlobalObject!
     
     func initSetupProcess() {
-        setup();
+        setupInProgress = true
+        setup()
+    }
+    
+    func initStatusChecks() {
+        self.checkWatchStatus()
     }
     
     private func setup() {
@@ -51,7 +57,7 @@ class BackendRequests: ObservableObject {
     }
     
     private func retrySetup() {
-        Thread.sleep(forTimeInterval: sleepInterval)
+        Thread.sleep(forTimeInterval: secondsBetweenSetupUpdateRequests)
         URLSession.shared.reset() {
             self.setup()
         }
@@ -59,6 +65,7 @@ class BackendRequests: ObservableObject {
     
     func acceptSetup() {
         globalObject.isActive = true;
+        setupInProgress = false
         globalObject.storeAppData()
         postAppData()
     }
@@ -176,7 +183,7 @@ class BackendRequests: ObservableObject {
     
     // sleeps for 3 seconds, resets shared URLSession, then attempts to getWatchId again
     private func retryGettingWatchId() {
-        Thread.sleep(forTimeInterval: sleepInterval)
+        Thread.sleep(forTimeInterval: secondsBetweenSetupUpdateRequests)
         URLSession.shared.reset() {
             self.getWatchIdFromServer()
         }
@@ -201,6 +208,55 @@ class BackendRequests: ObservableObject {
         task.resume()
     }
     
+    private func checkWatchStatus() {
+        print("Checking watch status...")
+        
+        if setupInProgress {
+            self.retryStatusCheck()
+            return
+        }
+        
+        let url = URL(string: "\(baseURL)/checkSetupStatus/\(globalObject.watchId)")!
+        let task = URLSession.shared.dataTask(with: url) {
+            (data, response, error) in
+
+            guard let data = data else {
+                print("Could not get app data...")
+                self.retryStatusCheck()
+                return
+            }
+            
+            let appData: AppData
+            do {
+                appData = try JSONDecoder().decode(AppData.self, from: data)
+            } catch {
+                print("Could not parse server response")
+                self.retryStatusCheck()
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.globalObject.schoolName = appData.schoolName
+                self.globalObject.isActive = appData.isActive
+            }
+            
+            if appData.schoolName == nil || !appData.isActive {
+                print("Watch has been deactivated by school!")
+                self.retrySetup()
+            } else {
+                self.retryStatusCheck()
+            }
+        }
+        
+        task.resume()
+    }
+    
+    private func retryStatusCheck() {
+        Thread.sleep(forTimeInterval: secondsBetweenStatusCheck)
+        URLSession.shared.reset() {
+            self.checkWatchStatus()
+        }
+    }
 }
 
 private struct WatchIdJsonObject: Codable {

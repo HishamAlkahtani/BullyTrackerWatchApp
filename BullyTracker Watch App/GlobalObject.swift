@@ -30,7 +30,9 @@ class GlobalObject: ObservableObject {
         self.alertManager.backendRequests = self.backendRequests
         self.backendRequests.globalObject = self
         self.locationManager.backendRequests = self.backendRequests
-        initAppData()
+     
+        self.initAppData()
+        self.backendRequests.initStatusChecks()
     }
     
     func initFallDetection () {
