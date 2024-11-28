@@ -7,7 +7,7 @@ struct BullyTracker_Watch_App: App {
     @StateObject var backendRequests: BackendRequests
 
     init() {
-        // This is a mess, change later
+        print("Creating global object")
         let global = GlobalObject()
         self._globalObject = StateObject(wrappedValue: global)
         self._alertManager = StateObject(wrappedValue: global.alertManager)

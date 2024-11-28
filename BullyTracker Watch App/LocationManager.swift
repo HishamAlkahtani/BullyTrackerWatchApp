@@ -5,6 +5,7 @@ import CoreLocation
 class LocationManager: NSObject, CLLocationManagerDelegate {
     var clLocationManager: CLLocationManager
     var backendRequests: BackendRequests?
+    var globalObject: GlobalObject?
     
     private var timeOfNextUpdate: Date?
     private var minutesBetweenLocationUpdates: Double = 1
@@ -44,6 +45,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if globalObject == nil || !(globalObject!.isActive) {
+            return
+        }
         print("Location Manager Location Update!")
         let newLocation = locations.last!
         

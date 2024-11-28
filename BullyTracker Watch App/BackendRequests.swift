@@ -23,7 +23,7 @@ class BackendRequests: ObservableObject {
     }
     
     private func setup() {
-        print("Checking setup status...")
+        print("Setup In Progress, Checking setup status...")
         let url = URL(string: "\(baseURL)/checkSetupStatus/\(globalObject.watchId)")!
         let task = URLSession.shared.dataTask(with: url) {
             (data, response, error) in
@@ -242,7 +242,7 @@ class BackendRequests: ObservableObject {
             
             if appData.schoolName == nil || !appData.isActive {
                 print("Watch has been deactivated by school!")
-                self.retrySetup()
+                self.initSetupProcess()
             } else {
                 self.retryStatusCheck()
             }

@@ -30,9 +30,9 @@ class GlobalObject: ObservableObject {
         self.alertManager.backendRequests = self.backendRequests
         self.backendRequests.globalObject = self
         self.locationManager.backendRequests = self.backendRequests
+        self.locationManager.globalObject = self
      
         self.initAppData()
-        self.backendRequests.initStatusChecks()
     }
     
     func initFallDetection () {
@@ -52,6 +52,8 @@ class GlobalObject: ObservableObject {
             // if watch is not active, it has not been setup yet.
             if (!isActive) {
                 backendRequests.initSetupProcess()
+            } else {
+                backendRequests.initStatusChecks()
             }
         } catch {
             backendRequests.getWatchIdFromServer()
@@ -68,5 +70,9 @@ class GlobalObject: ObservableObject {
     
     func getAppData() -> AppData {
         return AppData(watchId: self.watchId, isActive: self.isActive, schoolName: self.schoolName)
+    }
+    
+    func printAppState() {
+        print("\(isActive) \(watchId) \(schoolName)")
     }
 }
