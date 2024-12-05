@@ -8,9 +8,24 @@ class HKManager: NSObject, ObservableObject, HKLiveWorkoutBuilderDelegate {
     var session: HKWorkoutSession!
     var builder: HKLiveWorkoutBuilder!
     var globalObject: GlobalObject!
+    var alertManager: AlertManager?
+    
+    // max number of heart rate samples recorded at any time
+    private let sampleSize = 10
+    private var heartRateSampleQueue: [HKQuantity]
+
+    // num of samples before another alarm can be triggered
+    // this is to prevent repititve alerts
+    private let cooldownBetweenAlerts = 20
+    
+    private var sampleNumber = 0
+    private var sampleNumberOfLastAlert = -1
+    
     
     override init() {
+        print("Health Kit Manager!")
         self.active = false
+        self.heartRateSampleQueue = []
         if !HKHealthStore.isHealthDataAvailable() {
             print("Health Kit Not Available On The Device")
             self.healthStore = nil
@@ -59,6 +74,7 @@ class HKManager: NSObject, ObservableObject, HKLiveWorkoutBuilderDelegate {
         
         builder.delegate = self
         
+        
         session.startActivity(with: Date())
         builder.beginCollection(withStart: Date()) {
             (success, error) in
@@ -69,6 +85,40 @@ class HKManager: NSObject, ObservableObject, HKLiveWorkoutBuilderDelegate {
             print("WorkoutSession Started Sucessfully")
         }
     }
+    
+    private func checkHeartRateSpikes() {
+        if (sampleNumberOfLastAlert != -1 && sampleNumber - sampleNumberOfLastAlert < cooldownBetweenAlerts) {
+            return
+        }
+            
+            
+        let firstHalfCount = heartRateSampleQueue.count / 2
+        let secondHalfCOunt = heartRateSampleQueue.count - firstHalfCount
+        var firstHalfSum = 0.0
+        var secondHalfSum = 0.0
+        
+        for number in heartRateSampleQueue.dropLast(secondHalfCOunt) {
+            firstHalfSum += number.doubleValue(for: HKUnit(from: "count/min"))
+        }
+        
+        let firstHalfAverage = firstHalfSum / Double(firstHalfCount)
+        
+        for number in heartRateSampleQueue.dropFirst(firstHalfCount) {
+            secondHalfSum += number.doubleValue(for: HKUnit(from: "count/min"))
+        }
+        
+        let secondHalfAverage = secondHalfSum / Double(secondHalfCOunt)
+        
+        let percentChange = (secondHalfAverage - firstHalfAverage) / firstHalfAverage * 100
+        print("Percent Change: \(percentChange)")
+        
+        if (percentChange > 30) {
+            sampleNumberOfLastAlert = sampleNumber
+            DispatchQueue.main.async {
+                self.alertManager?.startCountdown()
+            }
+        }
+    }
      
     func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
         // App is only authorized to read heart rate, so safe to assume any data coming is HeartRate?
@@ -77,8 +127,20 @@ class HKManager: NSObject, ObservableObject, HKLiveWorkoutBuilderDelegate {
                 return
             }
             
+            sampleNumber += 1
+            
             let statistics = workoutBuilder.statistics(for: quantityType)
-                
+            let heartRate = statistics!.mostRecentQuantity()!
+            
+            print ("Heart Rate: \(heartRate) \(Date())")
+            
+            heartRateSampleQueue.append(heartRate)
+
+            if heartRateSampleQueue.count > sampleSize {
+                heartRateSampleQueue.remove(at: 0)
+                self.checkHeartRateSpikes()
+            }
+
             DispatchQueue.main.async {
                 let HR = String(format: "%.2f", statistics?.mostRecentQuantity()?.doubleValue(for: HKUnit(from: "count/min")) ?? -1.0)
                 self.globalObject.heartRate = "\(HR) BPM"
@@ -90,5 +152,4 @@ class HKManager: NSObject, ObservableObject, HKLiveWorkoutBuilderDelegate {
         // Required by HKLiveWorkoutBuilderDelegate
         // we don't need to do anything with this
     }
-    
 }

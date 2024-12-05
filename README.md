@@ -20,7 +20,7 @@ TODO:
     - [X] Start HKWorkoutSession (session starts as soon as app opens?)
     - [X] Implement HKLiveWorkoutBuilderDelegate
     - [X] Implement heart rate monitoring
-    - [ ] Implement high heart rate auto detection algorithm
+    - [X] Implement high heart rate auto detection algorithm
     - [ ] Implement Always On (so the screen doesn't lock)
        
 - [ ] User Interfacecs:
